@@ -6,10 +6,10 @@
 	</head>
 	<body>
 		<h1>XHTML handbook</h1>
-		<div>
+		<div class="section">
 			<h2>Doctypes</h2>
 			<p>Doctypes appear at the very to pof the page. They tell the browser how the html on your page should be interpreted.</p>
-			<div>
+			<div class="subsection">
 				<h3>xhtml 1.1 doctype</h3>
 				<p>xhtml 1.1 is a form of xml and the strictest doc type. Forcing xml rules on the document. The browser doesn't care.</p>
 				<p>	
@@ -21,5 +21,80 @@
 				</p>
 			</div>
 		</div>
+		<div class="section">
+			<h2>Block Elements</h2>
+			<p>Block elements provide the main structure of the page. They consume all the space available to them.</p>
+			<div class="subsection">
+				<h3>Heading</h3>
+				<p>
+					We represent headings with the code <code>&lt;h1&gt;</code> element. The number represents the importance of the heading. 1 is the most important and 6 is the least.
+				</p>
+			</div>
+			<div class="subsection">
+				<h3>Divisions</h3>
+				<p>The <code>&lt;div&gt;</code> element is used for parts of the document that can't be semantically described by other html block elements. It is usually used together with an id or class attribute.</p>
+			</div>
+			<div class="subsection">
+				<h3>Table</h3>
+				<p>
+					A table in html contains 1 or more row and 1 or more column. In the olden days they were used <strong>WRONGLY</strong> for formatting the page. Tables should only be used to represent tabular data.
+				</p>
+
+				<table>
+					<tbody>
+						<tr>
+							<th>Col1 Heading</th>
+							<th>Col2 Heading</th>
+						</tr>
+						<tr>
+							<td>Row1 Col1</td>
+							<td>Row1 Col2</td>
+						</tr>
+						<tr>
+							<td>Row2 Col1</td>
+							<td>Row2 Col2</td>
+						</tr>
+					</tbody>
+				</table>
+
+
+			</div>
+		</div>
+		<div class="section">
+			<h2>Inline Elements</h2>
+			<p>Inline elements exist inside block elements. They do not alter the flow of page.</p>
+		</div>
 	</body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
