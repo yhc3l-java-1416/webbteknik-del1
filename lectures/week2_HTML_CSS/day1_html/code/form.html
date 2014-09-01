@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+	<head>
+		<title>form</title>
+	</head>
+	<body>
+		<form action="server.html" method="get">
+			<fieldset>
+				username: <input type="text" name="user"/> <br/>
+				password: <input type="password" name="pass"/> <br/>
+				remember password: <input type="checkbox" name="remember"/> <br/>
+				<h2>Fav color:</h2>
+				red: <input type="radio" name="favcolor" value="red"/><br/>
+				blue: <input type="radio" name="favcolor" value="blue" checked="checked"/><br/>
+				green: <input type="radio" name="favcolor" value="green"/><br/>
+				<h2>Fav cars:</h2>
+				<select name="favcar" multiple="multiple">
+					<option value="terrible car">Volvo</option>
+					<option value="even worse">Saab</option>
+					<option value="goood car">Bentley</option>
+					<option value="great car">Rolls royce</option>
+				</select><br/>
+				notes: <textarea rows="4" cols="20" name="notes"></textarea><br/>
+				reset: <input type="reset"/><br/>
+				<input type="hidden" name="secret" value="Hush hush"/>
+				<input type="submit"/>
+			</fieldset>
+		</form>
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
