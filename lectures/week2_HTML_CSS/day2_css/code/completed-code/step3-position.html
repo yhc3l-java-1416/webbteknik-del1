@@ -4,33 +4,37 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<title>position</title>
 		<style type="text/css">
+			
+			
 			.box {
 				width: 200px;
 				height: 200px;
 				border: 5px solid #000;
-				background-color: green;
+				background-color: yellow;
 				margin: 10px;
 			}
-			#item2 {
+			#item1 {
+			
+				
+			}
+		  #item2 {
 				background-color: orange;
 				position: relative;
+				top:-10px;
 				left: 30px;
-				top: -30px;
-				z-index:11;
 			}
 			#item3 {
 				background-color: blue;
 				position: absolute;
-				top:300px;
-				left:70px;
-				z-index:10;
+				top:0px;
+				left:0px;
 			}
 			#item4 {
 				background-color: red;
-				position:fixed;
-				top:0px;
-				left:0px;
-				z-index: -1;
+				position: fixed;
+				bottom: 10px;
+				right:20px;
+				z-index:-1;
 			}
 			p {
 				font-size: 3em;
@@ -38,7 +42,7 @@
 		</style>
 	</head>
 	<body>
-		<div class="box" id="item1">
+		<div class="box " id="item1">
 			Item 1
 			<br/>
 			Static

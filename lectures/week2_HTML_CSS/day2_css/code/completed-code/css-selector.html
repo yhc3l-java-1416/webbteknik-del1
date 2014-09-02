@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"> 
+	<head> 
+		<title>HTML Reference</title> 
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8" /> 
+    		<style>
+    			/* 1. Change the font for the whole page to verdana.
+    			 *
+    			 * 2. Make all paragraphs have a cream background.
+    			 * 3. Make the table headings <th> have a green font.
+    			 * 4. Change so that everything with an "important" class has red text.
+    			 * 5. Change the font of paragraph with an id of "special" to times.
+    			 * 6. Change only the paragraphs with an "important" class so they are itallic but not the table.
+    			 * 7. Make all the code tags that appear in a paragraph double the size, but not those that appear in another tag, 
+    			 * 	ie. the ones in the table.
+    			 */
+    			body {
+    				font-family: Verdana,Geneva,Kalimati,sans-serif;
+    			}
+    			p {
+    				background-color:#E8F1D4;
+    			}
+    			th {
+    				color: green;
+    			}
+    			.important {
+    				color:red;
+    			}
+    			#special {
+    				font-family: times;
+    			}
+    			p.important {
+    				font-style:italic;
+    			}
+    			p code {
+    				font-size: 2em;
+    			}
+    		</style>
+    </head> 
+	<body> 
+		<div id="main">
+			<p>I'm a normal paragraph</p>
+			<p class="important">I'm an important paragraph</p>
+			<p id="special">I'm a special paragraph</p>
+			<p class="important">I'm an important paragraph <code>1+1=2</code></p>
+			<table class="important">
+				<tbody>
+					<tr><th>Example</th><th>Code</th></tr>
+					<tr><td>1+1=2</td><td><code>a+b=c</code></td></tr>
+					<tr><td>5*3=15</td><td>d*e=f</td></tr>
+				</tbody>
+			</table>
+		</div>
+	</body>
+</html>
