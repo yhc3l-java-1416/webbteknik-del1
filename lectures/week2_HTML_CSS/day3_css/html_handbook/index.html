@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+	"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+	<title>
+		XHTML handbook
+	</title>
+</head>
+<body>
+	<h1>HTML Reference</h1>
+	<div  id="toc"> 
+		<h2>Table of contents</h2> 
+		<ul> 
+			<li><a href="#doctype">Doctype Section</a> 
+				<ul> 
+					<li>HTML 4.01</li> 
+					<li>XTML</li> 
+					<li>HTML5</li> 
+				</ul> 
+			</li> 
+			<li><a href="#block">Block Elements</a> 
+				<ul> 
+					<li>Heading</li> 
+					<li>Division</li> 
+					<li>Table</li> 
+					<li>Paragraph</li> 
+					<li>Lists</li> 
+					<li>Horizontal Rule</li> 
+				</ul>	
+			</li> 
+			<li><a href="#inline">Inline Elements</a> 
+				<ul> 
+					<li>Anchor</li> 
+					<li>Span</li> 
+					<li>Image</li> 
+					<li>Strong</li> 
+					<li>Emphasis</li>
+				</ul>	
+			</li> 
+		</ul> 
+	</div> 
+	<div class="section" id="doctype">
+		<h2>Doctypes</h2>
+		<p>
+			Doctypes appear at the very top of the page. They tell the browser how the html on your page should be interpreted.
+		</p>
+		<div class="subsection">
+			<h3>xhtml 1.1 doctype</h3>
+			<p>
+				xhtml 1.1 is a form of xml and the strictest doctype. Forcing xml rules on the document. The browser doesn't care though.
+			</p>
+			<code>
+				&lt;?xml version="1.0" encoding="utf-8"?&gt;<br/>
+				&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"&gt;<br/>
+				&lt;html xmlns="http://www.w3.org/1999/xhtml"&gt;
+			</code>
+		</div>
+		<div class="subsection">
+			<h3>html5 doctype</h3>
+			<p>The html5 doctype allows code to be written far more loosely.</p>
+			<code>
+				&lt;!DOCTYPE html&gt;<br/>
+				&lt;html&gt;
+			</code>
+		</div>
+	</div>
+	<div class="section" id="block">
+		<h2>Block elements</h2>
+		<p>
+			Block elements provide the main structure of the page. They consume the entire width available to them.
+		</p>
+		<div class="subsection">
+			<h3>Headings</h3>
+			<p>We represent headings with the <code>&lt;h1&gt;</code> element. The number represents the headings importance. 1 is the most important and 6 the least.</p>
+			<table>
+				<tbody>
+					<tr>
+						<th>Code</th>
+						<th>Visualisation</th>
+					</tr>
+					<tr>
+						<td><code>&lt;h1&gt;Header 1&lt;/h1&gt;</code></td>
+						<td><h1>Header 1</h1></td>
+					</tr>
+					<tr>
+						<td><code>&lt;h2&gt;Header 2&lt;/h2&gt;</code></td>
+						<td><h2>Header 2</h2></td>
+					</tr>
+					<tr>
+						<td><code>&lt;h3&gt;Header 3&lt;/h3&gt;</code></td>
+						<td><h3>Header 3</h3></td>
+					</tr>
+					<tr>
+						<td><code>&lt;h4&gt;Header 4&lt;/h4&gt;</code></td>
+						<td><h4>Header 4</h4></td>
+					</tr>
+					<tr>
+						<td><code>&lt;h5&gt;Header 5&lt;/h5&gt;</code></td>
+						<td><h5>Header 5</h5></td>
+					</tr>
+					<tr>
+						<td><code>&lt;h6&gt;Header 6&lt;/h6&gt;</code></td>
+						<td><h6>Header 6</h6></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="subsection">
+			<h3>Divisions</h3>
+			<p>The div element is used for parts of the document that can't be semantically described by other html block elements. It is usually used in combination with a class or id attribute.</p>
+			<code>
+				&lt;div class="article"&gt;<br/>
+				&nbsp;&nbsp;&nbsp;Some very exciting news. <br/>
+				&lt;/div&gt;
+			</code>
+		</div>
+		<div class="subsection">
+			<h3>Paragraphs</h3>
+			<p>The paragraph element encloses paragraphs.</p>
+			<code>
+				&lt;p&gt;<br/>
+				&nbsp;&nbsp;&nbsp;The cat sat on the mat.<br/>
+				&lt;/p&gt;
+			</code>
+		</div>
+		<div class="subsection">
+			<h3>Tables</h3>
+			<p>A table in html contains 1 or more rows and 1 or more columns. In xhtml the rows should be inside a tbody element. Traditionally tables were used for formatting the page. They should not be used in this way. Tables should only be used where you want to represent tabular data.</p>
+			<table>
+				<tbody>
+					<tr>
+						<th>Code</th>
+						<th>Visualization</th>
+					</tr>
+					<tr>
+						<td>
+							<code>
+								&lt;table&gt;<br/>
+								&nbsp;&nbsp;&lt;tbody&gt;<br/>
+								&nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&gt;<br/>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;th&gt;Head col1&lt;/th&gt;<br/>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;th&gt;Head col2&lt;/th&gt;<br/>
+								&nbsp;&nbsp;&nbsp;&nbsp;&lt;/tr&gt;<br/>
+								&nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&gt;<br/>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;row2 col1&lt;/td&gt;<br/>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;row2 col2&lt;/td&gt;<br/>
+								&nbsp;&nbsp;&nbsp;&nbsp;&lt;/tr&gt;	<br/>
+								&nbsp;&nbsp;&lt;/tbody&gt;<br/>
+								&lt;/table&gt;
+							</code>
+						</td>
+						<td>
+							<table>
+								<tbody>
+									<tr>
+										<th>Head col1</th>
+										<th>Head col2</th>
+									</tr>
+									<tr>
+										<td>row2 col1</td>
+										<td>row2 col2</td>
+									</tr>	
+								</tbody>
+							</table>
+						</td>
+					</tr>	
+				</tbody>
+			</table>
+		</div>
+		<div class="subsection">
+			<h3>Lists</h3>
+			<p>
+				There are three main types of list that can be described with HTML.
+			</p>
+			<ul>
+				<li>Ordered list</li>
+				<li>Unordered list</li>
+				<li>Definition list</li>
+			</ul>
+			<table>
+				<tbody>
+					<tr>
+						<th>Code</th>
+						<th>Visualization</th>
+					</tr>
+					<tr>
+						<td>
+							<strong>Ordered list</strong><br/>
+							<code>
+								&lt;ol&gt;<br/>
+								&nbsp;&nbsp;&lt;li&gt;Saab&lt;/li&gt;<br/>
+								&nbsp;&nbsp;&lt;li&gt;Ford&lt;/li&gt;<br/>
+								&lt;/ol&gt;<br/>
+							</code>
+						</td>
+						<td>
+							<ol>
+								<li>Saab</li>
+								<li>Ford</li>
+							</ol>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<strong>Unordered list</strong><br/>
+							<code>
+								&lt;ul&gt;<br/>
+								&nbsp;&nbsp;&lt;li&gt;Saab&lt;/li&gt;<br/>
+								&nbsp;&nbsp;&lt;li&gt;Ford&lt;/li&gt;<br/>
+								&lt;/ul&gt;<br/>
+							</code>
+						</td>
+						<td>
+							<ul>
+								<li>Saab</li>
+								<li>Ford</li>
+							</ul>
+						</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>
+							<dl>
+								<dt>
+									Car
+								</dt>
+								<dd>
+									4 wheel transportation device	
+								</dd>
+								<dt>
+									Cycle
+								</dt>
+								<dd>
+									2 wheel transportation device
+								</dd>
+							</dl>
+						</td>
+					</tr>
+
+				</tbody>
+			</table>
+		</div>
+		<div class="subsection">
+			<h3>Horizontal rule</h3>
+			<p>
+				A horizontal break between two sections
+			</p>
+			<table>
+				<tbody>
+					<tr>
+						<th>Code</th>
+						<th>Visualization</th>
+					</tr>
+					<tr>
+						<td> <code>&lt;hr/&gt;</code></td>
+						<td> <hr/> </td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<div class="section" id="inline">
+		<h2>Inline elements</h2>
+		<p>
+			An inline element does not break the flow of the page.
+		</p>
+		<div class="subsection">
+			<h3>Anchor (Link)</h3>
+			<p>
+				The anchor element is used for linking to other resources. The resource could be within your page or on another page.
+			</p>
+			<p>
+				<a href="#block">To the block section.</a> The next link takes us to
+				google <a href="http://www.google.se">click me</a>.
+			</p>
+			<code>&lt;a href="#block"&gt;To the block section.&lt;/a&gt;<br/>
+				&lt;a href="http://www.google.se"&gt;To google &lt;/a&gt;
+			</code>
+
+		</div>
+		<div class="subsection">
+			<h3>Images</h3>
+			<p>
+				Images can be included in your page with this tag <code></code>
+				<img src="img/tortoise.jpg" alt="Picture of tortoise"/>
+				<img src="http://24.media.tumblr.com/b36b219d66c702924000dfe5bb095938/tumblr_mocjhwNOjY1qakea9o1_500.jpg"
+				alt="Picture of a hamster"/>
+				<code>
+					&lt;img src=&quot;img/tortoise.jpg&quot; alt=&quot;Picture of tortoise&quot;/&gt;<br/>
+					&lt;img src=&quot;http://24.media.tumblr.com/b36b219d66c702924000dfe5bb095938/tumblr_mocjhwNOjY1qakea9o1_500.jpg&quot;
+					alt=&quot;Picture of a hamster&quot;/&gt;
+				</code>
+			</p>
+		</div>
+		<div class="subsection">
+			<h3>Span</h3>
+			<p>The span element is the inline equivalent of a div. It can be used to markup elements that can not be described by any other element. </p>
+			<p> Example: I read <span class="book">the art of computer programming</span>
+			</p>
+		</div>
+		<div class="subsection">
+			<h3>Strong</h3>
+			<p>
+				The strong element is used for lifting out text that is <strong>important</strong>.
+			</p>
+		</div>
+		<div class="subsection">
+			<h3>Emphasis</h3>
+			<p>
+				The emphasis element is used for lifting out text that is <em>important</em> but not
+				as important as <strong>strong</strong> text.
+			</p>
+		</div>
+	</div>
+</body>
+</html>
