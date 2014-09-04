@@ -1,0 +1,19 @@
+#toc {
+	float: none;
+	width:100%;
+}
+#main {
+	margin:0px;
+	clear: both;
+}
+#toc ul li ul {
+	display: none;
+}
+#toc ul li {
+	float: left;
+	list-style-type: none;
+	margin: 5px;
+}
+#toc h2 {
+	display: none;
+}

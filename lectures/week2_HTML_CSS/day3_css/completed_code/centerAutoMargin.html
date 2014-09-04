@@ -4,34 +4,31 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<title>Float</title>
 		<style type="text/css">
-			.main-box{
-				width: 60%;
-				height: 500px;
-				min-width: 335px;
-				border: 5px solid black;
-				margin-left: auto;
-				margin-right: auto;
-			}
-			.box {
-				width:35%;
-				height:35%;
-				border: 5px dashed green;
-				margin:20px;
-				float:left;
-				background-color: yellow;
-			}
-			.clear-fix{
-				clear:both;
-			}
+
+		.mainBox {
+			width:50%;
+			height: 500px;
+			min-width: 300px;
+			border:5px solid black;
+			margin-left: auto;
+			margin-right:auto;
+		}
+		.box {
+			width:35%;
+			height:35%;
+			min-width:180px;
+			border: 5px dashed green;
+			background-color:yellow;
+			float:left;
+			margin:20px;
+		}
 		</style>
 	</head>
 	<body>
-		<div class="main-box">
+		<div class="mainBox">
 			<div class="box">Item 3</div>
 			<div class="box">Item 4</div>
-			<div class="clear-fix"></div>
 		</div>
-		
 	</body>
 </html>
 
