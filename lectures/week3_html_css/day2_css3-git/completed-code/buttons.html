@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>My first iPhone and Android web app</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <link rel="apple-touch-icon-precomposed" href="http://localhost/resources/img/icon.png"/> 
+    <link rel="apple-touch-icon" href="http://localhost/resources/img/icon.png" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" /> 
+    <script>
+      (function() {
+        var filename = navigator.platform === 'iPad' ?'iPadSplash.png' : 'iPhoneSplash.png';
+        document.write('<link rel="apple-touch-startup-image" ' + 'href="http://localhost/resources/img/' + filename + '" />' );
+      })();
+    </script>
+    <style>
+      body {
+        font-family:helvetica;
+        font-size:14px;
+        background:#e0e0e0;
+      }
+      
+      span {
+        display:inline-block;
+        margin-right:20px;
+      }
+       
+      a {
+        display:inline-block;
+        text-decoration:none;
+        margin-right:20px;
+        color:#c00;
+      }
+       
+      span span, span a {
+        margin:0;
+      }
+ 
+      /* Grey box */
+      .button1 {
+        padding:4px 7px;
+        font-size:12px;
+        color:#444;
+        background-color:#eee;
+        background-image:-webkit-gradient(linear, 0 0, 0 100%, color-stop(0, #fff), color-stop(0.05, #eee), color-stop(1, #bbb));
+        text-shadow:0 1px 0 #f6f6f6;
+        -webkit-border-radius:2px;
+        border:1px solid #888;
+        -webkit-box-shadow:0 1px 2px rgba(0,0,0,0.3);
+      }
+       
+      /* Black button */
+      .button2 {
+        height:22px;
+        font-size:10px;
+        background-color:#444;
+        background-image:-webkit-gradient(linear, 0 0, 0 100%, from(#555), to(#303030));
+        -webkit-border-radius:11px;
+        -webkit-box-shadow:0 1px 2px rgba(0,0,0,0.8);
+      }
+       
+      .button2 a {
+        padding:0 18px;
+        line-height:20px;
+        height:20px;
+        color:#ccc;
+        border-width:1px;
+        border-style:solid;
+        border-color:rgba(255,255,255,0.15);
+        -webkit-border-radius:10px;
+        text-shadow:0 -1px 0 #000;
+      }
+       
+      /* Windows 7 Red */
+      .button3 {
+        font-size:14px;
+        background-color:#c93f27;
+        background-image:-webkit-gradient(linear, 0 0, 0 100%, color-stop(0, #ec9f95), color-stop(0.5, #c93f27), color-stop(0.5, #af301f), color-stop(1, #f87036));
+        -webkit-border-radius:3px;
+        border:1px solid #af3c2c;
+        -webkit-box-shadow:0 2px 4px rgba(248,112,54,0.7);
+      }
+       
+      .button3 a {
+        padding:5px 10px;
+        color:#fff;
+        text-shadow:0 0 3px #ff8d5c;
+        -webkit-border-radius:2px;
+        border:2px solid rgba(255,255,255,0.25);
+      }
+       
+      /* Windows 7 Blue */
+      .button4 {
+        font-size:14px;
+        background-color:#54a1d9;
+        background-image:-webkit-gradient(linear, 0 0, 0 100%, color-stop(0, #8fc2e8), color-stop(0.5, #54a1d9), color-stop(0.5, #126aa9), color-stop(1, #2ddef2));
+        -webkit-border-radius:3px;
+        border:1px solid #377daf;
+        -webkit-box-shadow:0 2px 4px rgba(46,185,230,0.7);
+      }
+       
+      .button4 a {
+        padding:5px 10px;
+        color:#fff;
+        text-shadow:0 0 2px #0a5a93;
+        -webkit-border-radius:2px;
+        border:2px solid rgba(255,255,255,0.3);
+      }
+       
+      /* Gem green */
+      .button5 {
+        width:14px;
+        height:14px;
+        text-indent:-9999em;
+        background-image:-webkit-gradient(radial, 7 2, 0, 7 2, 3, from(rgba(255,255,255,0.85)), to(rgba(255,255,255,0))),
+                 -webkit-gradient(radial, 7 12, 0, 7 7, 14, from(#c7f08b), to(#006013));
+        -webkit-border-radius:7px;
+        border:1px solid #48762c;
+        -webkit-box-shadow:0 1px 0 #fff;
+      }
+       
+      /* Gem orange */
+      .button6 {
+        width:14px;
+        height:14px;
+        text-indent:-9999em;
+        background-image:-webkit-gradient(radial, 7 2, 0, 7 2, 3, from(rgba(255,255,255,0.85)), to(rgba(255,255,255,0))),
+                 -webkit-gradient(radial, 7 12, 0, 7 7, 14, from(#ffec7c), to(#e15600));
+        -webkit-border-radius:7px;
+        border:1px solid #c45d1f;
+        -webkit-box-shadow:0 1px 0 #fff;
+      }
+       
+      /* Glossy */
+      .button7 {
+        font-size:12px;
+        text-align:center;
+        background-image:-webkit-gradient(radial, 50% -186, 0, 50% -186, 400,
+          color-stop(0, rgba(255,255,255,0.3)),
+          color-stop(0.5, rgba(255,255,255,0.3)),
+          color-stop(0.5, rgba(255,255,255,0))),
+                 -webkit-gradient(linear, 0 0, 0 100%, from(#222), to(#777));
+        -webkit-border-radius:4px;
+        border:1px solid #555;
+        -webkit-box-shadow:0 1px 0 #fff;
+      }
+       
+      .button7 a {
+        width:76px;
+        height:22px;
+        line-height:22px;
+        color:#eee; 
+        text-shadow:0 0 3px #222;
+        -webkit-border-radius:4px;
+        border:2px solid rgba(255,255,255,0.15);
+      }
+       
+      /* Progress bar */
+      .button8 {
+        width:200px;
+        height:15px;
+        border-width:0 1px 1px 1px;
+        border-style:solid;
+        border-color:#a6a6a6 #bfbfbf #a6a6a6 #bfbfbf;
+       
+        background-image:-webkit-gradient(linear, 0 0, 0 100%, color-stop(0, rgba(255,255,255,0)), color-stop(0.15, rgba(255,255,255,0.6)), color-stop(0.5, rgba(255,255,255,0))),
+                 -webkit-gradient(linear, 0 0, 0 100%, color-stop(0, #a6a6a6), color-stop(0.1, #b6b6b6), color-stop(0.9, #f8f8f8), color-stop(1, #aaa));
+        -webkit-box-shadow:0 2px 2px rgba(0,0,0,0.15);
+        overflow:hidden;
+      }
+       
+      .button8 span {
+        width:90px;
+        height:15px;
+        background-image:-webkit-gradient(linear, 0 0, 0 100%, color-stop(0, rgba(255,255,255,0)), color-stop(0.15, rgba(255,255,255,0.55)), color-stop(0.5, rgba(255,255,255,0))),
+                 -webkit-gradient(linear, 0 0, 0 100%, color-stop(0, #204db5), color-stop(0.1, #0251ae), color-stop(0.9, #6fc1ff), color-stop(1, #569ce1));
+       
+        -webkit-mask-image:-webkit-gradient(linear, 0 0, 100% 0, color-stop(0.1, rgba(187,226,255,1)), color-stop(0.45, rgba(187,226,255,0.74)), color-stop(0.55, rgba(187,226,255,0.74)), color-stop(0.9, rgba(187,226,255,1)));
+        -webkit-mask-repeat:repeat-x;
+        -webkit-mask-size:18px 15px;
+        -webkit-mask-position-x:0;
+        text-indent:-9999em;
+       
+        -webkit-animation-name:progressBarAni;
+        -webkit-animation-duration:0.5s;
+        -webkit-animation-iteration-count:infinite;
+        -webkit-animation-timing-function:linear;
+        -webkit-transition-property:-webkit-mask-position-x;
+        -webkit-border-radius:3px;
+      }
+       
+      @-webkit-keyframes progressBarAni {
+        from { -webkit-mask-position-x:0; }
+        to { -webkit-mask-position-x:20px; }
+      }
+       
+      /* Barber shop */
+      .button9 {
+        width:200px;
+        height:15px;
+        border-width:0 1px 1px 1px;
+        border-style:solid;
+        border-color:#a6a6a6 #bfbfbf #a6a6a6 #bfbfbf;
+        background-image:-webkit-gradient(linear, 0 0, 0 100%, color-stop(0, rgba(255,255,255,0)), color-stop(0.15, rgba(255,255,255,0.6)), color-stop(0.5, rgba(255,255,255,0))),
+                 -webkit-gradient(linear, 0 0, 0 100%, color-stop(0, #a6a6a6), color-stop(0.1, #b6b6b6), color-stop(0.9, #f8f8f8), color-stop(1, #aaa));
+        -webkit-box-shadow:0 2px 2px rgba(0,0,0,0.15);
+        overflow:hidden;
+      }
+       
+      .button9 span {
+        text-indent:-9999em;
+        width:100%;
+        height:15px;
+        -webkit-mask-image:-webkit-gradient(linear, 18 0, 0 10,
+          color-stop(0.23, rgba(0,0,0,0)),
+          color-stop(0.3, rgba(0,0,0,0.8)),
+          color-stop(0.3, rgba(0,0,0,1)),
+          color-stop(0.7, rgba(0,0,0,1)),
+          color-stop(0.7, rgba(0,0,0,0.8)),
+          color-stop(0.77, rgba(0,0,0,0)));
+        -webkit-mask-repeat:repeat-x;
+        -webkit-mask-size:20px 15px;
+        -webkit-mask-position-x:0;
+        background-image:-webkit-gradient(linear, 0 0, 0 100%, color-stop(0, rgba(255,255,255,0)), color-stop(0.15, rgba(255,255,255,0.55)), color-stop(0.5, rgba(255,255,255,0))),
+                 -webkit-gradient(linear, 0 0, 0 100%, color-stop(0, #204db5), color-stop(0.1, #0251ae), color-stop(0.9, #6fc1ff), color-stop(1, #569ce1));
+       
+        -webkit-animation-name:progressBarAni;
+        -webkit-animation-duration:0.5s;
+        -webkit-animation-iteration-count:infinite;
+        -webkit-animation-timing-function:linear;
+        -webkit-transition-property:-webkit-mask-position-x;
+        -webkit-border-radius:3px;
+      }
+       
+      .button10 {
+        padding:1px;
+        -webkit-border-radius:28px;
+        background:#522718;
+        -webkit-box-shadow:0 2px 3px rgba(0,0,0,0.4);
+      }
+      .button10 a {
+        width:56px;
+        height:56px;
+        text-indent:-9999em;
+        background-image:-webkit-gradient(radial, 28 30, 0, 28 30, 32,
+                  color-stop(0, rgba(255,255,255,0)),
+                  color-stop(0.79, rgba(255,255,255,0)),
+                  color-stop(0.97, rgba(255,255,255,0.9)),
+                  color-stop(0.97, rgba(255,255,255,0))),
+                 -webkit-gradient(radial, 28 32, 0, 28 36, 32,
+                  from(rgba(255,255,255,0.5)),
+                  to(rgba(255,255,255,0))),
+                 -webkit-gradient(radial, 28 28, 0, -22 0, 28,
+                  from(rgba(30,30,30,1)),
+                  to(rgba(30,30,30,1))),
+                 -webkit-gradient(radial, 28 28, 0, 78 0, 28,
+                  from(rgba(30,30,30,1)),
+                  to(rgba(30,30,30,1))),
+                 -webkit-gradient(radial, 28 28, 0, 28 78, 28,
+                  from(rgba(30,30,30,1)),
+                  to(rgba(30,30,30,1))),
+                 -webkit-gradient(radial, 50% 100%, 0, 50% 50%, 30, color-stop(0.5, #ffdb5f), color-stop(1, #f37d26));
+        -webkit-border-radius:28px;
+      }
+  </style>
+  </head>
+  <body>
+    <h1>Buttons</h1>
+   <p><a href="#" class="button1">Grey Box</a></p> 
+   <p><span class="button2"><a href="#">Black Button</a></span></p>
+   <p><span class="button3"><a href="#">Win7 Red</a></span><span class="button4"><a href="#">Win7 Blue</a></span></p>
+   <p><a href="#" class="button5">Gem Green</a><a href="#" class="button6">Gem Orange</a></p>
+   <p><span class="button7"><a href="#">Glossy</a></span></p>
+   <p><span class="button8"><span id="progressBar">Progress bar</span></span></p> 
+   <p><span class="button9"><span id="barberShop">Barber shop</span></span></p>
+   <p><span class="button10"><a href="#">Burn</a></span></p>
+   All buttons created by cubiq <a href="cubiq.org/dropbox/cssgrad.html" > Please see original page</a>
+  </body>
+</html>
