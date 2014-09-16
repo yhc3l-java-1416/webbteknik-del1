@@ -26,14 +26,14 @@ for (var i = 0; i < 10; i = i + 1) {
 
 console.log(i);
 i = 0;
+
 while (i < 10) {
 	console.log(i);
 	i = i + 1;
 }
 
-
 var d = 5;
 do {
 	console.log(d);
 	d = d + 1;
-}while (d < 3);
+} while (d < 3);
