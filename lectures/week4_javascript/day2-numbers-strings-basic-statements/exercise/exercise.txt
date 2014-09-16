@@ -1,0 +1,14 @@
+You are going to create the logic for navigating a user menu. The menu:
+
+	a) Start page
+	b) About page
+	c) Another page
+
+You will prompt the user to enter a character corresponding to the page and then display text in the console depending on their choice.
+
+
+
+1) Create an html file that reads in a javascipt file.
+2) Show a prompt with the available pages.
+3) Read the users selection and clean up/normalise the input. Both 'A' and 'a' should work. As should '   a  '.
+4) Write a switch statement that provides a console.log with the page name of the selected page.
