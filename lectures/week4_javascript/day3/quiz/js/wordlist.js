@@ -1,0 +1,11 @@
+var ord = [];
+ord.push('blomma');
+ord.push('orm');
+ord.push('hosta');
+ord.push('rodde');
+ord.push('bonde');
+ord.push('ost');
+ord.push('bodde');
+ord.push('trodde');
+ord.push('snodd');
+ord.push('ont');
