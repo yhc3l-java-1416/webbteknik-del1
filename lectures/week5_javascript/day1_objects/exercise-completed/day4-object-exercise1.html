@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<script>
+
+	// 1)  Have a look at blocket and create a single object that you think contains all the properties
+	//  needed to represent an item on blocket.
+	//Title
+	//Category
+	//Description
+	//Images
+	//Price
+	//Location
+	var blocketItem = {};
+	blocketItem.title = "4 kittens";
+	blocketItem.category = "Animals";
+	blocketItem.images = ["cat1.jpg", "cat2.jpg"];
+	blocketItem.description = "4 lovely kitten for sale";
+	blocketItem.price = 400;
+	blocketItem.location = "734931";
+
+	
+	// 2) As you will be making lots of these objects and want to minimise the risk of errors. Create an
+	// object factory function. A function that takes the values and returns a populated floggit object.
+	
+	var blocketItemFactory = function(title, category, images, description, price, location){
+		var that = {};
+		that.title = title;
+		that.category = category;
+		that.images = images;
+		that.description = description;
+		that.price = price;
+		that.location = location;
+		return that;
+	};
+	
+	// 3) Create an array with multiple floggit objects in it.
+	var blocketItems = [];
+	blocketItems.push(blocketItemFactory("kittens", "Animals", ["img1.jpg","img2.jpg"],"pretty cats",500,"73994"));
+	blocketItems.push(blocketItemFactory("Wheels", "Car parts",[],"",100));
+	blocketItems.push(blocketItemFactory("Pram", "Baby items",[], "",900));
+	blocketItems.push(blocketItemFactory("Horse", "Animals",[],"",700));
+
+	// 4)  Your boss wants to see if your structure is going to work for the list all objects. Create a loop 
+	// that loops through all your objects and console.logs just the titles.
+	
+	var i;
+	for(i = 0; i < blocketItems.length; i = i + 1){
+		console.log(blocketItems[i].title + " " + blocketItems[i].price);
+	}
+	console.log("-------------------------------------------");
+	
+
+
+
+
+
+	// 5) Advanced can you sort your array by the object price and rerun the loop you created in step 4?
+
+	blocketItems.sort(function compare(currentObj, nextObj) {
+	  if (currentObj.price < nextObj.price){
+	  	return -1;
+	  }
+	     
+	  if (currentObj.price > nextObj.price){
+	  	return 1;
+	  }
+	     
+	  // currentObj must be equal to nextObj
+	  return 0;
+	});
+
+
+
+
+
+
+
+
+	for(i = 0; i < blocketItems.length; i = i + 1){
+		console.log(blocketItems[i].title + " " + blocketItems[i].price);
+	}
+</script>
