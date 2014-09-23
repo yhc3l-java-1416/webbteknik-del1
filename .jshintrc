@@ -22,6 +22,7 @@
       "console": false,
       "prompt": false,
       "alert": false,
+      "triv": false,
       "_": false
   }
 }
