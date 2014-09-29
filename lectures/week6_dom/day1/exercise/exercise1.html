@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8"/>
+		<title>Exercise DOM basics</title>
+		<style>
+			.green {
+				background-color: green
+			}
+		</style>
+	</head>
+	<body>
+		<h1 class="special">Exercise DOM basics</h1>
+		<p class="special" id="para1">I'm the first paragraph</p>
+		<p id="para2">I'm the second paragraph</p>
+		<p id="para3">I'm the third paragraph</p>
+		<p class="special">I'm the third paragraph</p>
+	</body>
+	<script>
+		// 1) Assign the 3 html paragraphs to seperate javascript variables using document.querySelector and selecting them by their id
+
+		// 2) Change the contents (innerText) of the first paragraph to "This is exciting".
+
+		// 3) Change the contents of the second paragraph to "click on me to turn the third paragraph green". toggle
+
+		// 4) Add left padding of 100px to the second paragraph. Hint check style, by logging your element to console with the console.dir function.
+
+		// 5) Create a function that you attach to paragraph 2's onclick event. The function should toggle a green class to paragraph 3. 
+
+
+		// 6) Use the console.dir() function to see all the properties and see if you can figure out how to toggle, (switch on and off a class).
+
+
+		// 7) Extra time exercise. Can you also update the text of paragraph two so that it shows what will happen to paragraph 3. i.e. If paragraph 3 is already green the text should be "click on me to turn the third paragraph white" and not "click on me to turn the third paragraph green".
+		
+		// 8) Create a javascript variable for all the special elements. Use document.querySelectorAll and a css query to return all elements with a class of special and populate your variable.
+		// Write a loop and change the text color of all specialElements to "#bada55";
+
+	</script>
+</html>
