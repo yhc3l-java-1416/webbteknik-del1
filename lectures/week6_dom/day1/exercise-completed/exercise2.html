@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8"/>
+		<title>getting values</title>
+		<style>
+		.button {
+			background-color: blue;
+			padding:10px;
+			margin-left: 5px;
+		}
+		</style>
+	</head>
+	<body>
+		<h1>getting values</h1>
+		<div/>
+			<p>Question: <span id="question"></span></p>
+			<p>Answer: <span id="answer"></span></p>
+			<p><span class="button" id="previous">Previous</span><span class="button" id="next">Next</span></p>
+		</div>
+	</body>
+
+
+	<script>
+	var questions = [{
+		q: "What is the highest Mountain in the world?",
+		a: "Everest"
+	},{
+		q: "What is the capital of the UK?",
+		a: "London"
+	},{
+		q: "What is the capital of the Sweden?",
+		a: "Stockholm"
+	}];
+	
+	// Wire up the html above so when you click next you show the next question in the questions array. When you come to the last question hide the next span with style.display = "none";
+	var questionEl = document.querySelector('#question'),
+		answerEl = document.querySelector('#answer'),
+		nextButton = document.querySelector('#next'),
+		previousButton = document.querySelector('#previous'),
+		currentQuestionIndex = 0;
+
+	function showQuestion (question){
+		questionEl.innerText = question.q;
+		answerEl.innerText = question.a;
+	}
+
+	showQuestion(questions[currentQuestionIndex]);
+
+	nextButton.onclick = function(){
+		if(currentQuestionIndex < questions.length -1){
+			currentQuestionIndex = currentQuestionIndex + 1;
+		} else {
+			currentQuestionIndex = 0; 
+		}
+		showQuestion(questions[currentQuestionIndex]);
+	};
+
+	previousButton.onclick = function(){
+		if(currentQuestionIndex > 0){
+			currentQuestionIndex = currentQuestionIndex - 1;
+		} else {
+			currentQuestionIndex = questions.length -1;
+		}
+		showQuestion(questions[currentQuestionIndex]);
+	};
+
+	// If you have time add a span for previous and wire it up so it goes to the previous question. Again hide previous if you are on the first question.
+	</script>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
