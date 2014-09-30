@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>DOM events</title>
+		<script>
+
+			window.addEventListener('DOMContentLoaded', function(){
+				var h1El = document.querySelector('h1');
+			
+				function click1 (e){
+					console.log('You clicked h1 at pixel ' + e.x + ',' + e.y);
+					console.dir(e);
+				}
+				
+				function click2 (e){
+					console.log('click');
+				}
+
+				h1El.addEventListener('click', click1);
+				h1El.addEventListener('click', click2);
+
+				h1El.addEventListener('contextmenu', function(e){
+					console.log('you right clicked on h1');
+					e.preventDefault();
+				});
+
+				window.addEventListener('keydown', function(e){
+					console.log(e.keyIdentifier);
+				});
+
+
+			});
+		</script>
+	</head>
+	<body>
+		<h1>DOM events</h1>
+	</body>
+	
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
