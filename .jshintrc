@@ -23,6 +23,7 @@
       "prompt": false,
       "alert": false,
       "triv": false,
-      "_": false
+      "_": false,
+      "$": false
   }
 }

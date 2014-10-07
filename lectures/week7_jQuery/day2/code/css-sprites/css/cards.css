@@ -1,0 +1,41 @@
+.CA{
+	background-position: -0px -0px;
+}
+.C2{
+	background-position: -73px -0px;
+}
+.C3{
+	background-position: -146px -0px;
+}
+.C4{
+	background-position: -219px -0px;
+}
+.SA{
+	background-position: -0px -98px;
+}
+.S2{
+	background-position: -73px -98px;
+}
+.S3{
+	background-position: -146px -98px;
+}
+
+.HA{
+	background-position: -0px -196px;
+}
+.H2{
+	background-position: -73px -196px;
+}
+.H3{
+	background-position: -146px -196px;
+}
+
+.card{
+	float:left;
+	background-image: url(../img/classic-playing-cards.png);
+	border:0px;
+	padding:0px;
+	margin:0px;
+	width:73px;
+	height:98px;
+}
