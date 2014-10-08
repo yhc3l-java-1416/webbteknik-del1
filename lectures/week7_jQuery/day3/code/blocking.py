@@ -5,3 +5,4 @@ print "hello"
 time.sleep(2) 
 # We block our thread for two seconds with the call above
 print "world"
+print "Hej Alla"
