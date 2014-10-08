@@ -1,30 +1,31 @@
-/*jslint browser:true */
-/*global alert: false, confirm: false, console: false, Debug: false, opera: false, prompt: false, WSH: false */
+'use strict';
+
 // STEP 1
 // Make sure none of the code below executes until the DOM is totally loaded
 // Your step 1 code here
 $(function () {
     var checkAnswer, writeQuestion, correctAnswer,
+        points = 0,
         questions = [{
-            question: "What is the longest river in the world is called?",
-            answers: ["Nile", "Amazon", "Thames"],
-            correctAnswer: "Nile"
+            question: 'What is the longest river in the world is called?',
+            answers: ['Nile', 'Amazon', 'Thames'],
+            correctAnswer: 'Nile'
         }, {
-            question: "What is the highest mountain in the world called?",
-            answers: ["Everest", "Mount Blanc", "Snowden"],
-            correctAnswer: "Everest"
+            question: 'What is the highest mountain in the world called?',
+            answers: ['Everest', 'Mount Blanc', 'Snowden'],
+            correctAnswer: 'Everest'
         }, {
-            question: "The longest road in the world is approximately how long?",
-            answers: ["20000km", "2000km", "8000km"],
-            correctAnswer: "8000km"
+            question: 'The longest road in the world is approximately how long?',
+            answers: ['20000km', '2000km', '8000km'],
+            correctAnswer: '8000km'
         }, {
-            question: "Which country grows the most coffee",
-            answers: ["Sweden", "Brazil", "France"],
-            correctAnswer: "Brazil"
+            question: 'Which country grows the most coffee',
+            answers: ['Sweden', 'Brazil', 'France'],
+            correctAnswer: 'Brazil'
         }, {
-            question: "Which sea or ocean does the river Jordan run into?",
-            answers: ["Pacific", "Atlantic", "Dead Sea"],
-            correctAnswer: "Atlantic"
+            question: 'Which sea or ocean does the river Jordan run into?',
+            answers: ['Pacific', 'Atlantic', 'Dead Sea'],
+            correctAnswer: 'Atlantic'
         }],
         currentQuestionIndex = 0;
     // STEP 2
@@ -76,6 +77,7 @@ $(function () {
             if (currentQuestionIndex < questions.length) {
                 writeQuestion();
             } else {
+                $('#result').text('You scored ' + points + ' points');
                 $('#result').show();
                 setTimeout(function () {
                     $('#result').hide();
@@ -92,6 +94,7 @@ $(function () {
         // and then run the moveToNextQuestion function
         // Your step 8 code here
         if (selectedAnswer === correctAnswer) {
+            points = points + 1;
             $('#correctAnswer').show();
             setTimeout(function () {
                 $('#correctAnswer').hide();
