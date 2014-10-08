@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+    <head>
+        <title></title>
+        <style>
+            #questionTitle, #questionText {
+                padding:10px;
+                margin:10px;
+            }
+            #buttons {
+                display: -webkit-box;
+                -webkit-box-orient: horizontal;
+            }
+            #buttons > * {
+                text-align:center;
+                background-color:gray;
+                -webkit-box-flex: 1;
+                color: white;
+                padding:10px;
+                margin:10px;
+                border-radius:5px;
+                display: block;
+            }
+            .splash {
+                display:none;
+                text-align: center;
+                width: 300px;
+                height:300px;
+                background:hsla(280, 3%, 50%, 0.68);
+                padding:40px;
+                position: absolute;
+                left : 50%;
+                top : 50%;
+                border-radius: 10px;
+                margin-left: -150px;
+                margin-top: -150px;
+            }
+        </style>
+        <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+        <script src="js/main.js"></script>
+    </head>
+    <body>
+        <div id="app">
+            <h1>
+            Question
+            <span id="questionNumber"></span> out of
+            <span id="questionCount"></span>
+            </h1>
+            <div id="questionText">
+                Some text
+            </div>
+            <div id="buttons">
+                <div id="buttonA">
+                    A
+                </div>
+                <div id="buttonB">
+                    B
+                </div>
+                <div id="buttonC">
+                    C
+                </div>
+            </div>
+            <div class="splash" id="correctAnswer">
+                Correct Answer
+                <br/>
+                Well done
+            </div>
+            <div class="splash" id="wrongAnswer">
+                Nope sorry
+                <br/>
+            </div>
+            <div class="splash" id="result">
+
+            </div>
+        </div>
+    </body>
+</html>

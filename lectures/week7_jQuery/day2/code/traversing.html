@@ -5,7 +5,14 @@
 	<title>traversing</title>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 	<style>
-
+		.green{
+			background-color: green;
+		}
+		
+		#special {
+			padding-left: 20px;
+			color: red;
+		}
 	</style>
 </head>
 <body>
@@ -14,18 +21,18 @@
 		<div>
 			child1 of parent1
 		</div>
-		<div>
+		<div id="special" class="test">
 			child2 of parent1
 		</div>
-		<div>
+		<div class="test">
 			child3 of parent1
 		</div>
 	</div>
 	<div id="parent2">
-		<div>
+		<div class="test">
 			child1 of parent2
 		</div>
-		<div>
+		<div class="test">
 			child2 of parent2
 		</div>
 		<div>
