@@ -60,13 +60,8 @@
                      * 
                      * 
                      */
-                   
-                    
-                    navigator.geolocation.getCurrentPosition(function(position){
-                        lat = position.coords.latitude;
-                        lng = position.coords.longitude;
-                         localResultsPanel.geoload(lat, lng, 10);
-                    });
+                   localResultsPanel.geoload(51.5072, 0.1275, 10000);
+
 
                 };
 
