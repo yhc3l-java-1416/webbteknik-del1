@@ -1,0 +1,18 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <title>TODO supply a title</title>
+        <script type="text/javascript">
+            function writePosition(position){
+                alert('lat: ' + position.coords.latitude +' long: ' +position.coords.longitude + ' accuracy: ' + position.coords.accuracy)
+            }
+            if(navigator.geolocation)var test = navigator.geolocation.getCurrentPosition(writePosition);
+            else alert('no navigator.geolocation');
+        </script>
+    </head>
+    <body>
+        <p>
+          
+        </p>
+    </body>
+</html>

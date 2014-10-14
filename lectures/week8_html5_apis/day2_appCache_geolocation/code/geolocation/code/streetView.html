@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8"/>
+		<title>Street view</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+		<script>
+			$(function(){
+				navigator.geolocation.getCurrentPosition(function(position){
+					var url = "http://maps.googleapis.com/maps/api/streetview?size=400x400&location=" + position.coords.latitude+ ",%20"+ position.coords.longitude +"&fov=98&heading=260&pitch=11&sensor=false&key=YOUR_KEY_HERE";
+					$("#streetImage").attr("src", url);
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<img id="streetImage" src="http://maps.googleapis.com/maps/api/streetview?size=400x400&location=59.2476,%2018.2202&fov=98&heading=136&pitch=11&sensor=false&key=YOUR_KEY_HERE"/>
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
