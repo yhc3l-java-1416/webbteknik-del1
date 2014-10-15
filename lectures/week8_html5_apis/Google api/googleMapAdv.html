@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8"/>
+		<title></title>
+		 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCCJ4nIUZ-bRMpd9pUueqbhFTT2kYYhw8A&sensor=false"></script>
+		<style>
+          	html, body, #map_canvas { 
+          		height:100%;
+          	}
+		</style>
+        <script>
+            document.addEventListener("DOMContentLoaded", function(){
+                var mapOptions = {
+                    center: new google.maps.LatLng(59.2476, 18.2202),
+                    zoom: 19,
+                    mapTypeId: google.maps.MapTypeId.HYBRID
+                };
+                var map = new google.maps.Map(document.querySelector("#map_canvas"), mapOptions);
+                  var marker = new google.maps.Marker({
+                      position: new google.maps.LatLng(59.2476, 18.2202),
+                      map: map,
+                      title: 'Hello World!'
+                  });
+                  
+            });
+        </script>
+
+	</head>
+	<body>
+		<div id="map_canvas"></div>
+	</body>
+</html>

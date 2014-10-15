@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>GPS</title>
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=no" />
+    <link rel="apple-touch-icon-precomposed" href="http://localhost/resources/img/icon.png"/> 
+    <link rel="apple-touch-icon" href="http://localhost/resources/img/icon.png" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" /> 
+    <script>
+      (function() {
+        var filename = navigator.platform === 'iPad' ?'iPadSplash.png' : 'iPhoneSplash.png';
+        document.write('<link rel="apple-touch-startup-image" ' + 'href="http://localhost/resources/img/' + filename + '" />' );
+      })();
+    </script>
+    <script src="js/geowiki.js"></script>
+  </head>
+  
+   
+  <body onload="powerUpGPS();">
+    <h1>Super simple, super slim geodata loader</h1>
+    <div id="list"></div>
+    <div id="info"></div> 
+    <div id="map"></div>
+    <script>
+      buildGeoList(document.getElementById('list'));
+      function writePosition(position){
+        alert('lat: ' + position.coords.latitude +' long: ' +position.coords.longitude + ' accuracy: ' + position.coords.accuracy)
+        document.getElementById("map").innerHTML ="<img src='http://maps.google.com/maps/api/staticmap?center="+ position.coords.latitude + "," + position.coords.longitude + "&maptype=hybrid&zoom=18&size=300x250&markers=color:blue|label:S|"+ position.coords.latitude + "," + position.coords.longitude + "&sensor=false&key=ABQIAAAA60OvlRzcqrM2_wTFhVbvOBRCcKzIo6o9Lsn_KxJHfxrEWkKy3RTbgD8-iPpmb5mc-X8n0Sy7wKZSkQ' />";
+      }
+      function powerUpGPS(){
+        if(navigator.geolocation){
+          var test = navigator.geolocation.getCurrentPosition(writePosition);
+        } else { 
+          alert('no navigator.geolocation');
+        }
+      }
+    </script>
+  </body>
+</html>

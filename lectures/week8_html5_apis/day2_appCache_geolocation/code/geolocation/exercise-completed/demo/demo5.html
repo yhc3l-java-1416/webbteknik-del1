@@ -1,0 +1,115 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+    <head>
+        <title>Taxi v3</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width; initial-scale=1.0; minimum-scale=1.0; maximum-scale=1.0;user-scalable=0;"/>
+        <link rel="apple-touch-icon" href="tigertaxilogo.png"/>
+        <link rel="apple-touch-icon-precomposed" href="tigertaxilogo.png"/>
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+
+        <script type="text/javascript" src="http://www.google.com/jsapi?key=ABQIAAAA60OvlRzcqrM2_wTFhVbvOBRCcKzIo6o9Lsn_KxJHfxrEWkKy3RTbgD8-iPpmb5mc-X8n0Sy7wKZSkQ" ></script>
+        <script type="text/javascript" charset="utf-8">
+            google.load("maps", "3.x", {other_params:"sensor=false"});
+            google.load("jquery", "1.4.2");
+        </script>
+
+        <script type="text/javascript" charset="utf-8">
+            var map;
+            var geocoder;
+            var geocodeMarker = new google.maps.Marker({position:null,
+                map: null,
+                icon:'http://www.bcrumbz.com/images/map_interest_point.png'});
+            var infoWindow = new google.maps.InfoWindow();
+            var myLocationMarker = new google.maps.Marker({position:null,
+                map: null,
+                icon: 'http://www.bcrumbz.com/images/map_point_last.png',
+                title:"Here you are!"
+            });
+
+            function initializeMap(myLocation) {
+                var myOptions = {
+                    zoom: 12,
+                    center: myLocation,
+                    mapTypeControl: false,
+                    navigationControl: true,
+                    navigationControlOptions: {style: google.maps.NavigationControlStyle.SMALL},
+                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                };
+                map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+                geocoder = new google.maps.Geocoder();
+            }
+
+            function updateMyLocationMarker(myLocation){
+                myLocationMarker.setPosition(myLocation);
+                myLocationMarker.setMap(map);
+                map.panTo(myLocationMarker.getPosition());
+            }
+
+            function geocode(myLocation){
+                if (geocoder) {
+                    geocoder.geocode({'latLng': myLocation}, function(results, status) {
+                        //alert(results);
+                        if (status === google.maps.GeocoderStatus.OK) {
+                            $.each(results, function(){
+                                var highQuality = false;
+                                if((!geocodeMarker.getPosition()) || (!highQuality & distance(this.geometry.location,myLocation)<distance(geocodeMarker.getPosition(),myLocation)) || (this.types == "street_address" & distance(this.geometry.location,myLocation)<distance(geocodeMarker.getPosition(),myLocation))){
+                                    highQuality = (this.types == "street_address");
+                                    geocodeMarker.setPosition(this.geometry.location);
+                                    geocodeMarker.setMap(map);
+                                    infoWindow.setContent(this.formatted_address);
+                                    infoWindow.open(map, geocodeMarker);
+                                }
+                            });
+                        } else {
+                            alert("Geocoder failed due to: " + status);
+                        }
+                    });
+                }
+            }
+
+            function usePosition(position){
+                $("#message").css("display","none");
+                var myLocation =new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+                if(map){
+                    geocode(myLocation);
+                    updateMyLocationMarker(myLocation);
+                } else {
+                    initializeMap(myLocation);
+                    geocode(myLocation);
+                    updateMyLocationMarker(myLocation);
+                }
+            }
+
+            function positionError(error){
+                var ERROR_CODES = ['', 'Permission denied', 'Position unavailable', 'Timeout'];
+                var errorMessage = 'Error ' + ERROR_CODES[error.code] + '<br/>'+ error.message;
+                $("#message").html(errorMessage);
+            }
+            
+            function distance(p1, p2) {
+                function rad(x) {
+                    return x*Math.PI/180;
+                }
+                var R = 6371; // earth's mean radius in km
+                var dLat  = rad(p2.lat() - p1.lat());
+                var dLong = rad(p2.lng() - p1.lng());
+                var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+                    Math.cos(rad(p1.lat())) * Math.cos(rad(p2.lat())) * Math.sin(dLong/2) * Math.sin(dLong/2);
+                var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+                var d = R * c;
+                return d.toFixed(3)*1000;
+            }
+
+            $(function(){
+                        $("#message").html('Fireing up the GPS and obtaining your location....');
+                        navigator.geolocation.getCurrentPosition(usePosition, positionError, {enableHighAccuracy:true});
+                
+            });
+        </script>
+    </head>
+    <body>
+        <div id="message"></div>
+        <div id="map_canvas" style="width:100%; height:100%"></div>
+    </body>
+</html>

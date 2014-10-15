@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head><meta charset="utf-8" />
+        <title>Step 3a</title>
+        <link rel="stylesheet" href="css/wui_v0.1.css" />
+        <script src="js/iscroll-3.7.1.js">
+        </script>
+        <script src="js/wui_mini_v0.1.js">
+        </script>
+        <script src="js/geowiki.js">
+        </script>
+        <script>
+            // Load controls when DOM content is ready.
+            document.addEventListener('DOMContentLoaded', function() {
+                // Create the app control
+                var app = wui.controls.app();
+
+                //Create the input section as plain html
+                var input ="<p>Search wikipedia, and find out when articles were adjusted.</p>";
+                input += "Search word: <input id='searchInput' type='text' /><br>";
+                input += "Maximum: <input id='limitInput' type='number' min='1' max='20' step='1'/><br>";
+
+                // Create a submit button
+                var submitButton = wui.controls.buttons.standard();
+                submitButton.setText("submit");
+                submitButton.setOnClick( function() {
+                    var search = document.getElementById("searchInput").value;
+                    var limit = document.getElementById("limitInput").value;
+                    resultsPanel.load(search, limit);
+                    menuBar.setActive(resultsMenuItem);
+                });
+                // Create the search panel
+                var searchPanel = compositePanel();
+                searchPanel.titleBar.setText("Search");
+
+                // Add our input html section to the search panel
+                searchPanel.mainContent.setText(input);
+
+                // Add the submit button after the html input text
+                searchPanel.mainContent.appendControl(submitButton);
+
+           
+                
+                
+                // Create our results page based on a custom wikipanel control
+                var resultsPanel = wikiPanel();
+                
+                var localResultsPanel = wikiPanel();
+                localResultsPanel.setId("localRes");
+                
+                
+                localResultsPanel.show = function() {
+                    var lat, lng;
+                    localResultsPanel.getDomElement().style.display = "-webkit-box";
+                    localResultsPanel.wikiListPanel.mainContent.setText("Loading...");
+                    /*
+                     * 
+                     * Exercise 7c here
+                     * 
+                     * 
+                     * 
+                     */
+                     navigator.geolocation.getCurrentPosition(function(position){
+                        localResultsPanel.geoload(position.coords.latitude, position.coords.longitude, 10000);
+                     });
+                   
+
+
+                };
+
+				var testPanel = compositePanel();
+      			testPanel.mainContent.setText("TEST");
+      			
+                // Create the search menu button and wire it to our search panel
+                var searchMenuItem = wui.controls.menu.menuItem();
+                searchMenuItem.setIconControl('S');
+                searchMenuItem.setSelectedIconControl("<strong>S</strong>");
+                searchMenuItem.setPanel(searchPanel);
+                searchMenuItem.setText("Search");
+
+				 // Create the search menu button and wire it to our search panel
+                var localSearchMenuItem = wui.controls.menu.menuItem();
+                localSearchMenuItem.setIconControl('L');
+                localSearchMenuItem.setSelectedIconControl("<strong>L</strong>");
+                localSearchMenuItem.setPanel(localResultsPanel);
+                localSearchMenuItem.setText("Local");
+                
+                // Create the results menu button and wire it to our results panel
+                var resultsMenuItem = wui.controls.menu.menuItem();
+                resultsMenuItem.setIconControl('R');
+                resultsMenuItem.setSelectedIconControl("<strong>R</strong>");
+                resultsMenuItem.setPanel(resultsPanel);
+                resultsMenuItem.setText("Results");
+
+                // Add the menu items to out menuBar
+                var menuBar = wui.controls.menu.menuBar();
+                menuBar.items.add(searchMenuItem);
+                menuBar.items.add(resultsMenuItem);
+                menuBar.items.add(localSearchMenuItem);
+                menuBar.setActive(localSearchMenuItem);
+
+                // Add the controls to our app
+                app.appendControl(searchPanel);
+                app.appendControl(resultsPanel);
+                app.appendControl(localResultsPanel);
+                app.appendControl(menuBar);
+
+                // Add our app to the page
+                var body = document.getElementsByTagName('body')[0];
+                body.appendChild(app.getDomElement());
+            });
+        </script>
+    </head>
+    <body>
+    </body>
+</html>

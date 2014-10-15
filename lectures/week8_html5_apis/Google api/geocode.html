@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <script type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE&sensor=false">
+    </script>
+    <script type="text/javascript">
+      var geocoder = new google.maps.Geocoder();
+      
+      navigator.geolocation.getCurrentPosition(function(position){
+        var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+        geocoder.geocode({'latLng': latlng}, function(results, status){
+          if(status === "OK"){
+            for(var i = 0; i < results.length; i = i +1){
+              if(results[i].types[0] === "postal_code") {
+               console.log(results[i]);
+              }
+            }
+            
+          } else {
+            console.log("NO RESULTS", status);
+          }
+        });
+      });
+    </script>
+  </head>
+  <body>
+  </body>
+</html>

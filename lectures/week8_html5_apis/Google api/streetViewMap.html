@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8"/>
+		<title>Street view</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+		 <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE&sensor=false"></script>
+		<script>
+			var key = "YOUR_KEY_HERE";
+			
+			var geocoder = new google.maps.Geocoder(); 
+
+			$(function(){
+				$("#streetImage").hide();
+				$("#mapImage").hide();
+
+				navigator.geolocation.getCurrentPosition(function(position){
+					// Get the nearest address
+					var point = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
+					geocoder.geocode({latLng: point},function(results, status) {
+						if(status === "OK"){
+							for(var i = 0; i < results.length; i = i +1){
+								if(results[i].types[0] === "street_address"){
+									$("#streetName").text(results[i].formatted_address);
+								}
+							}
+						}
+					});
+
+					// Get a streetview image
+					var url = "http://maps.googleapis.com/maps/api/streetview?size=400x400&location=";
+					url = url + position.coords.latitude;
+					url = url + ",%20";
+					url = url + position.coords.longitude;
+					url = url + "&fov=98&heading=136&pitch=11&sensor=false&key=";
+					url = url + key;
+					$("#streetImage").attr("src",url).show();
+
+					// Get a map centered where we are
+					var url2 = "http://maps.googleapis.com/maps/api/staticmap?center="
+					url2 = url2 + position.coords.latitude;
+					url2 = url2 + ",";
+					url2 = url2 + position.coords.longitude;
+					url2 = url2 + "&zoom=15&size=600x600&maptype=terrain&markers=color:blue%7Clabel:S%7C";
+					url2 = url2 + position.coords.latitude;
+					url2 = url2 + ",";
+					url2 = url2 + position.coords.longitude;
+					url2 = url2 + "&sensor=false&key=";
+					url2 = url2 + key;
+					$("#mapImage").attr("src",url2).show();
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<h1 id="streetName"></h1>
+		<img id="streetImage" src=""/>
+		<img id="mapImage" src=""/>
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
