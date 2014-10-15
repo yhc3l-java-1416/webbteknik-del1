@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8"/>
+		<title>Canvas</title>
+		<style>
+			canvas {
+				float: left;
+				border: solid black 2px;
+				/*width:500px;
+				height:500px;*/
+			}
+			canvas:hover{cursor:crosshair}
+			table {
+				padding: 0px;
+				margin: 0px;
+			}
+			td { 
+				width:20px;
+				height:20px;
+				border: solid black 1px;
+			}
+
+			.black {
+				background-color: black;
+			}
+			.yellow {
+				background-color: yellow;
+			}
+			.white {
+				background-color: white;
+			}
+			.red {
+				background-color: red;
+			}
+			.blue {
+				background-color: blue;
+			}
+			.green {
+				background-color: green;
+			}
+
+		</style>
+		<script>
+			document.addEventListener("DOMContentLoaded", function () {
+				var canvas = document.querySelector("canvas"),
+					ctx = canvas.getContext('2d'), 
+					color = "red",
+					draw = false;
+				canvas.width = 500;
+				canvas.height = 500;
+
+				var colors = document.querySelectorAll(".color");
+				for(var i = 0; i < colors.length; i = i +1){
+					colors[i].addEventListener("click", function(event) {
+						color = event.srcElement.className.replace("color ", "");
+					}, false);
+				}
+
+				document.querySelector("#clear").addEventListener("click", function() {
+					canvas.width = 500;
+					canvas.height = 500;
+				}, false);
+
+				document.querySelector("#save").addEventListener("click", function() {
+					localStorage.image = canvas.toDataURL("image/png"); // converts my image to a png and then saves as a string
+				}, false);
+
+				canvas.addEventListener("mousedown", function (e) {
+					draw = true;
+					ctx.beginPath();
+					ctx.moveTo(e.offsetX, e.offsetY);
+				}, false);
+
+				canvas.addEventListener("mousemove", function (e) {
+					if (draw) {
+						ctx.strokeStyle = color;
+						ctx.lineWidth = 7;
+						ctx.lineTo(e.offsetX, e.offsetY);
+						ctx.stroke();
+					}
+				}, false);
+
+				canvas.addEventListener("mouseup", function (e) {
+					draw = false;
+				}, false);
+
+				if(localStorage.image !== undefined){
+					var img = new Image(); // create an html image
+					img.src = localStorage.image; // read src from localStorage
+					img.onload = function () {
+						// when image is loaded draw on Canvas
+						ctx.drawImage(img, 0, 0);
+					};
+				}
+				
+			}, false);
+		</script>
+	</head>
+	<body>
+		<div> <span id="clear">clear</span> <span id="save">save</span></div>
+		<canvas></canvas>
+		<table>
+			<tr>
+				<td class="color red"></td>
+				<td class="color white"></td>
+			</tr>
+			<tr>
+				<td class="color blue"></td>
+				<td class="color green"></td>
+			</tr>
+			<tr>
+				<td class="color black"></td>
+				<td class="color yellow"></td>
+			</tr>
+		</table>
+	</body>
+</html>

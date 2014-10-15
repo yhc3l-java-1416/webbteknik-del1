@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8"/>
+		<title>Canvas vector</title>
+		<style>
+			canvas {
+				border: solid black 2px;
+			}
+		</style>
+		<script>
+			document.addEventListener("DOMContentLoaded", function () {
+				var canvas = document.querySelector("canvas"),
+					ctx = canvas.getContext("2d");
+				ctx.fillStyle = "red"; // fill color
+				ctx.fillRect(20, 20, 50, 50); // Draw and fill a rectangle 
+
+				ctx.strokeStyle = "blue"; // Stroke/outline color
+				ctx.lineWidth = 5; // Width in pixel
+				ctx.strokeRect(80, 80, 60, 60);
+
+				ctx.beginPath();
+				// draw a curve ( x, y, radius, startPointInRadions, endPointInRadians, clockwise)
+				ctx.arc(40, 50, 30, 0, Math.PI * 2, true); 
+				ctx.fill();
+
+				ctx.lineTo(0,0);// put pen on paper and move to coordinate
+				ctx.lineTo(95,95); 
+				ctx.moveTo(35,100); // lift pen from paper and move
+				ctx.lineTo(100,35);
+				ctx.stroke();
+
+			}, false);
+		</script>
+	</head>
+	<body>
+		<canvas></canvas>
+	</body>
+</html>
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+	<head>
+		<title>bpm tests</title>
+		<style>
+			.passed{
+				list-style-type:circle;
+				color:green;
+			}
+			.failed{
+				list-style-type:square;
+				color:red;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="testResults"></div>
+	</body>
+	<script>
+		var log = function(id, text, passed) {
+			var ul, li, h2;
+			if(id && document.querySelectorAll("#" + id).length > 0) {
+				ul = document.querySelectorAll("#"+id)[0];
+			} else {
+				ul = document.createElement("ul");
+				ul.setAttribute("id",  id);
+				h2 = document.createElement("h2");
+				h2.innerHTML = id;
+				document.querySelector("#testResults").appendChild(h2);
+				document.querySelector("#testResults").appendChild(ul);
+			}
+			li = document.createElement("li");
+			li.innerHTML = text;
+			if(typeof passed ==="undefined"){
+				passed = true;
+			}
+			li.className = passed ? "passed" : "failed";
+			ul.appendChild(li);
+		};
+		//log("helloWorld","hej",false)
+	</script>
+	<script src="../bpm.js"></script>
+	<script src="assert.js"></script>
+	<script src="bpmTests.js"></script>
+</html>

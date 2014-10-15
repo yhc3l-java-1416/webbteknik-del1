@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8"/>
+		<title></title>
+		<script>
+		document.addEventListener("DOMContentLoaded", function(){
+			var canvas = document.querySelector("canvas"),
+				context = canvas.getContext("2d");
+
+			var img = document.createElement("img");
+			img.src = "cheese.jpg";
+			img.onload = function () {
+				canvas.width = img.naturalWidth;
+				canvas.height = img.naturalHeight;
+				context.drawImage(img, 0, 0);
+				
+				// add to canvas
+				
+			};
+			document.querySelector("#invert").onclick = function() {
+				var pixels= context.getImageData(0, 0, context.canvas.width, context.canvas.height);
+				for(var i = 0; i < pixels.data.length; i = i + 4){
+					pixels.data[i + 0] = 255 - pixels.data[i + 0]; // Inverted red
+					pixels.data[i + 1] = 255 - pixels.data[i + 1]; // Invert Green
+					pixels.data[i + 2] = 255 - pixels.data[i + 2]; // Invert Blue
+					pixels.data[i + 3] = pixels.data[i + 3]; // Don't touch alpha
+				}
+				context.putImageData(pixels, 0, 0);
+			};
+
+
+			var inputImages = document.querySelector("#inputImage");
+
+			inputImages.onchange = function() {
+				var reader = new FileReader();
+				reader.readAsDataURL(inputImages.files[0]);
+				reader.onload = function (e) {
+					var img = document.createElement("img");
+					img.src = e.target.result;
+					img.onload = function() {
+						canvas.width = img.naturalWidth;
+						canvas.height = img.naturalHeight;
+						context.drawImage(img, 0, 0);
+					};
+					
+				};
+			};
+		});
+		</script>
+	</head>
+	<body>
+		<canvas></canvas>
+		<div>
+			<span id="invert">Invert Image </span>
+			<input id="inputImage" type="file" accept="image/*;capture=camera"/>
+		</div>
+	</body>
+</html>
+
+
+
+
+
+
+

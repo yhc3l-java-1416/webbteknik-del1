@@ -1,0 +1,11 @@
+https://developers.google.com/maps/documentation/staticmaps/?hl=sv#quick_example
+https://developers.google.com/maps/documentation/streetview/?hl=sv
+
+https://google-developers.appspot.com/maps/documentation/javascript/examples/marker-animations
+
+http://maps.googleapis.com/maps/api/streetview?size=400x400&location=59.2476,18.2202&fov=98&heading=136&pitch=11&sensor=false
+
+https://google-developers.appspot.com/maps/documentation/javascript/examples/geocoding-reverse
+
+
+59.2476,18.2202
