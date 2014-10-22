@@ -1,3 +1,4 @@
+'use strict';
 var express = require('express'),
 	app = express(),
 	jsonParser = require('body-parser').json();
@@ -14,6 +15,7 @@ var books = {
 		author: 'Tom Blackmore'
 	}
 };
+var lastId = 1;
 
 app.get('/books', function (req, res) {
 	res.json(books);
@@ -48,6 +50,11 @@ app.put('/books/:id', jsonParser, function (req, res) {
 	}
 });
 
-
+app.post('/books', jsonParser, function (req, res) {
+	lastId = lastId + 1;
+	books[lastId] = req.body;
+	res.setHeader('Location', '/books/' + lastId);
+	res.status(201).send();
+});
 
 app.listen(8001);

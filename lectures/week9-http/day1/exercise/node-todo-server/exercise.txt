@@ -1,0 +1,51 @@
+GETTING TO KNOW THE CODE
+
+Your task is to create a todo list server application.
+
+1) In terminal cd into the node-todo-server. Type -> subl ./     to open the code in sublime.
+
+2) Start the node webserver by typing in terminal -> node index.js 
+
+3) Check that the server is running by going to http://127.0.0.1:8001 in a browser.
+If the server is running properly you should see our html todo webpage that saves in localstorage. We will be changing this code so it stores our list on a server.
+
+4) Open the index.js file in sublime. On line 13 you will see the following:
+ 	app.use(express.static(__dirname + '/public'));
+
+ 	The code tells our webserver to first see if there is a static file that matches the url in the public directory. The standard default file for a webpage is index.html
+
+ 	Expand the public directory in sublime and you will see the client html code. The index.html file is the file that is served when we surf to this url http://127.0.0.1:8001.
+
+5) Open the index.html file and change the title and h1 to be My todo save the file and refresh your browser.
+	Note we haven't restarted the service but your changes should have been applied. This is because only changes to files run on the server require us to restart our service. Our html file is run in the client browser.
+
+WRITING THE WEB SERVICE
+
+Now you have seen how we have set up our static webserver, we will configure the web service for storing our items.
+
+The service will work like this:
+
+a) method: get 		url: http://localhost:8001/items  		action: return all items in our list
+b) method: get		url: http://localhost:8001/items/:id 	action: return a specific item in out list
+c) method: delete	url: http://localhost:8001/items/:id    action: delete a specific item in our list 
+d) method: post		url: http://localhost:8001/items		action: create a new item in our list
+
+6) Look at the code in index.js, note that some of the above functionality is already written.
+
+7) In postman (chrome plugin) test that doing a get request to http://localhost:8001/items returns all the items as a json object.
+
+8) Write code to wire up the other 3 http methods and urls i.e. b,c and d above.
+Use the code that we wrote today https://github.com/yhc3l-java-1416/webbteknik-del1/blob/master/lectures/week9-http/day1/code/express.js as a guide. Test your service in postman and make sure you can create, add and delete items. (Don't forget you must restart your webservice everytime you change the code: ctrl + c to switch off the server -> node index.js to start it).
+
+WRITING THE CLIENT CODE
+
+Now that you have a working webservice we now want to change our client code so we dont use localstorage. Instead we want to use our webservice. This way multiple members of our family can shar the same list.
+
+Todo this we must perform the requests we've been doing via postman from our javascript file. We will use jQuery to do this. Have a good read of the following http://learn.jquery.com/ajax/jquery-ajax-methods/
+
+9) Open the client javascript file public script.js. Note this file runs in the browser not on the server. This can be confusing at first. Think that everythin in the public folder is an app that is going to be installed on the client. Whereas the index.js file only runs in one place on the server. In the script.js file you will find your instructions for wiring your code to the server.
+
+
+
+
+
