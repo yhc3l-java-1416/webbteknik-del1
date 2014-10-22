@@ -1,7 +1,7 @@
 var express = require('express'),
 	app = express(),
-	bodyParse = require('body-parser'),
-	jsonParser = bodyParse.json(),
+	bodyParser = require('body-parser'),
+	jsonParser = bodyParser.json(),
 	items = {
 		0: 'bread',
 		1: 'eggs'
