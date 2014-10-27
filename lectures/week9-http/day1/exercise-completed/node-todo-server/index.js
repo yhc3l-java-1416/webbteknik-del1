@@ -4,7 +4,7 @@ var express = require('express'),
 	jsonParser = bodyParser.json(),
 	items = {
 		0: 'bread',
-		1: 'eggs'
+		1: 'fish'
 	},
 	lastId = 1,
 	port = 8001;
@@ -22,14 +22,37 @@ app.get('/items', function (req, res) {
 	for (var key in items) {
 		itemsArray.push({
 			id: key,
-			item: items[key]
+			name: items[key]
 		});
 	}
 	res.json(itemsArray);
 });
 
 app.get('/items/:id', function (req, res) {
-	res.send('get item with id ' + req.params.id);
+	var item = items[req.params.id];
+	if (item === undefined) {
+		res.status(404).send('Not found');
+	} else {
+		res.json(items[req.params.id]);
+	}
+});
+
+app.delete('/items/:id', function (req, res) {
+	var item = items[req.params.id];
+	if (item === undefined) {
+		res.status(404).send('Not found');
+	} else {
+		delete items[req.parms.id];
+		res.status(204).send();
+	}
+});
+
+app.post('/items', function (req, res) {
+	var newItem = req.body;
+	lastId = lastId + 1;
+	items[lastId] = newItem;
+	res.setHeader('Location', '/items/' + lastId);
+	res.status(201).send();
 });
 
 app.listen(port);

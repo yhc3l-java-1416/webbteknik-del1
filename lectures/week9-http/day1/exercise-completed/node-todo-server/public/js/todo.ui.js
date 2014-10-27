@@ -42,13 +42,17 @@ $(function () {
         $('ul').empty();
         // 1) Change this function to get data from the server with ajax instead of localstorage.
         // get http://127.0.0.1:8001/items
-        if (localStorage.items !== undefined) {
-            items = JSON.parse(localStorage.items);
-        }
-        for (var i = 0; i < items.length; i = i + 1) {
-            addItem(items[i]);
-        }
-        console.log('Loading Items');
+
+        todo.models.items.getAll(function (err, data) {
+            if (err === null) {
+                items = data;
+                for (var i = 0; i < items.length; i = i + 1) {
+                    addItem(items[i]);
+                }
+            } else {
+                alert(err);
+            }
+        });
     };
 
     // delete updateItems
