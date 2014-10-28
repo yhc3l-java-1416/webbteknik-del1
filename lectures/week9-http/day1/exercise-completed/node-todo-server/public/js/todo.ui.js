@@ -1,22 +1,7 @@
 'use strict';
 $(function () {
-    var loadItems, updateItems, addItem,
-        items = [{
-            id: 0,
-            name: 'bread'
-        }, {
-            id: 1,
-            name: 'eggs'
-        }, {
-            id: 3,
-            name: 'ham'
-        }, {
-            id: 4,
-            name: 'cola'
-        }, {
-            id: 5,
-            name: 'whiskey'
-        }];
+    var loadItems, addItem,
+        items = [];
 
     addItem = function (itemObj) {
         var listItem = $('<li>'),
@@ -26,9 +11,14 @@ $(function () {
         removeButton.click(function () {
             // 4) Delete the item from the server itemObj.id
             // delete http://127.0.0.1:8001/items/itemObj.id
-            listItem.remove();
-            // 5) Instead of updateItems rerun loadItems
-            updateItems();
+            todo.models.items.delete(itemObj, function (err) {
+                if (err === null) {
+                    loadItems();
+                } else {
+                    alert(err);
+                }
+            });
+
             $('#itemName').focus();
         });
         itemSpan.text(itemObj.name);
@@ -55,26 +45,21 @@ $(function () {
         });
     };
 
-    // delete updateItems
-    updateItems = function () {
-        items = [];
-        $('li').each(function () {
-            items.push($(this).children().first().text());
-        });
-        localStorage.items = JSON.stringify(items);
-    };
-
     $('#button').click(function () {
         var itemText = $('#itemName').val();
         itemText = $.trim(itemText);
         if (itemText !== '') {
             // 2) add the item to the server with ajax
             // post http://127.0.0.1:8001/items
-            addItem({
-                name: itemText
+            todo.models.items.add(itemText, function (err) {
+                if (err === null) {
+                    loadItems();
+                } else {
+                    alert(err);
+                }
             });
             // 3) if add is successful instead of updateItems run loadItems to load all the items from the server. 
-            updateItems();
+
         }
     });
     loadItems();

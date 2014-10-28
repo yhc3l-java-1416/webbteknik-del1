@@ -42,7 +42,7 @@ app.delete('/items/:id', function (req, res) {
 	if (item === undefined) {
 		res.status(404).send('Not found');
 	} else {
-		delete items[req.parms.id];
+		delete items[req.params.id];
 		res.status(204).send();
 	}
 });
@@ -50,7 +50,7 @@ app.delete('/items/:id', function (req, res) {
 app.post('/items', function (req, res) {
 	var newItem = req.body;
 	lastId = lastId + 1;
-	items[lastId] = newItem;
+	items[lastId] = newItem.name;
 	res.setHeader('Location', '/items/' + lastId);
 	res.status(201).send();
 });

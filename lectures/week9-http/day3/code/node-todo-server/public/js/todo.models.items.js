@@ -1,7 +1,7 @@
 todo.models.items = {};
 todo.models.items.getAll = function (callback) {
 	$.ajax({
-		url: '/items',
+		url: 'http://localhost:8001/items',
 		type: 'GET',
 		dataType: 'json',
 		success: function (json) {
@@ -14,7 +14,7 @@ todo.models.items.getAll = function (callback) {
 };
 todo.models.items.delete = function (item, callback) {
 	$.ajax({
-		url: '/items/' + item.id,
+		url: 'http://localhost:8001/items/' + item.id,
 		type: 'DELETE',
 		success: function () {
 			callback(null);
@@ -26,7 +26,7 @@ todo.models.items.delete = function (item, callback) {
 };
 todo.models.items.add = function (itemText, callback) {
 	$.ajax({
-		url: '/items',
+		url: 'http://localhost:8001/items',
 		type: 'POST',
 		data: {
 			name: itemText
